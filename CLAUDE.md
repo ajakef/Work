@@ -1,0 +1,14 @@
+# Aspen/gem projects
+## Overview
+- This folder contains several related subfolders, all pertaining to geophysical loggers.
+- gem-firmware is the firmware for the Gem infrasound logger. It is now frozen and must not be modified, but is available as a reference.
+- aspen-firmware is the firmware for the Gem's successor, the Aspen. It differs from the Gem by being on a different platform (Apollo3 vs ATMEGA328p) and having expanded capabilities (works with both 100 and 200 samples per second instead of just 100 like the Gem, and logs 4 channels instead of 1). Typical uses include a single channel (infrasound) or all 4 channels (infrasound + 3-component geophone). Design priorities include low power, small size, light weight, simplicity of use. It writes to a custom text format, with priorities of readability by developers (i.e., not binary) and small file size; human readability by ordinary users is not a priority. Testing requires uploading it to a logger and running for a long time.
+- gemlog is the Python package that processes raw files. It works for both Aspen and Gem. Unlike the firmware files which are only used by me, it is installed and used by maybe 25 people and hosted on PyPI. Tags are pushed to PyPI, and tagged versions need to work reliably. Firmware changes to the Aspen file format require updates to gemlog.
+- serial_spectrogram is a real-time plotter for the Aspen. There is a Python version (original) and an Android app (built from the Python package). Firmware changes to the Aspen may require changes to these plotters.
+- If present, CO2_sensor_data is unrelated and should not be modified.
+
+## Instructions
+- When I'm using ~/Work/ as the root folder, it's because I want you to see all the packages at once as context. I may just be working on one at a time, or I may be working on two and need to keep them aligned.
+- Subfolders have their own instructions and priorities. For example, the serial_spectrogram app has its own CLAUDE.md in serial_spectrogram/app/. Follow those instructions when working on files in the subfolder, but not in other subfolders (i.e., do not follow app/CLAUDE.md instructions when working on files in aspen-firmware/).
+- Each project has its own git repo.
+- When software engineering jargon is necessary, guess whether I know it, and if you think I might not, define it. I'm pretty familiar with terms and concepts needed for programming Python and C++, but do not know a lot of software engineering lingo and know very little about smartphone app programming. If I use many words instead of a common term I appear to not know, use it and define it in your response so I can improve.
